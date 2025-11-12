@@ -1,0 +1,428 @@
+/* ------ Global Styles ------  */
+:root{
+  --bgcolor:#fff;
+  --primaryColor:#000;
+  --secondaryColor: #6c5f5b;
+  --accentColor:#333;
+}
+body{
+  margin: 0;
+  padding: 0;
+  font-family: "Rubik", sans-serif;
+  /* font-family: "Roboto", sans-serif; */
+}
+/* ------ Header Section ------  */
+header{
+  margin-top: 20vh;
+}
+/* ------ Main Section ------  */
+#main{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  /* margin-top: 150px; */
+}
+#info-container{
+  display: flex;
+  width: 50vw;
+  flex-shrink: 0;
+  /* justify-content: space-between; */
+  gap: 550px;
+  /* padding-right: 50px; */
+  /* align-items: center; */
+  /* padding-bottom: 20px; */
+  /* padding-right: 20px; */
+  /* padding-left: 20px; */
+}
+#timer{
+  font-size: 1.3em;
+  font-weight: 500; 
+  display: flex;
+  margin-right: 80px;
+  flex-shrink: 0;
+}
+@media (max-width:540px) {
+  #timer{
+    margin-right: -30px;
+  }
+}
+#info-right{
+  display: flex;
+  justify-content: center;
+  gap: 1.5em;
+  align-items: center;
+  /* margin-right: 2em; */
+}
+#game{
+  font-size: 35px;
+  /* padding: 1.5em; */
+  /* box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3); */
+  width: 70vw;
+  position: relative;
+  -webkit-user-select: none;
+  -ms-user-select: none; 
+  user-select: none;
+  height: 100vh;
+}
+#game:focus{
+  outline: 0;
+}
+#game:focus #words{
+  filter: blur(0);
+  opacity: 1;
+}
+#game:focus #cursor{
+  display: block;
+}
+#game:focus #focus-error{
+  display: none;
+}
+@keyframes blink{
+  0%{
+    opacity: 1;
+  }
+  50%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+#cursor{
+  display: none;
+  width: 1px;
+  height: 45px;
+  background-color: var(--primaryColor);
+  position: fixed;
+  animation: blink 1s infinite;
+}
+#words{
+  filter: blur(5px);
+  opacity: 0.35;
+  color: var(--secondaryColor);
+  position: relative;
+}
+.correct{
+  color: var(--primaryColor);
+}
+.incorrect{
+  text-decoration: underline;
+  color: rgb(255, 0, 0);
+}
+.extra{
+  color:#f55;
+}
+#focus-error{
+  position: absolute;
+  /* top: 300px; */
+  text-align: center;
+  padding-top: 70px;
+  inset: 0;
+  /* inset: 2em 50px 10px; */
+}
+#reset-button{
+  font-weight: bolder;
+  font-family: monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 2em; */
+  padding: 7px;
+  width: 200px;
+  border-radius: 7px;
+  background-color: inherit;
+  border:1px solid rgba(0, 0, 0, 0.3);
+  transition: all 0.15s ease;
+}
+/* Light mode styles */
+#reset-button {
+  border: 1px solid #333; /* dark gray border */
+  color: #333; /* dark gray text */
+  background-color: #fff; /* white background */
+}
+/* Dark mode styles */
+.dark-mode #reset-button {
+  background-color: #444; /* dark dropdown background color */
+  border: 1px solid transparent; /* white border */
+  color: #fff; /* white text */
+}
+#reset-button:hover{
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+.dropdown{
+  font-weight: bolder;
+  font-family: monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 2em; */
+  padding: 9px;
+  width: 120px;
+  border-radius: 7px;
+  background-color: inherit;
+  border:1px solid rgba(0, 0, 0, 0.3);
+  transition: all 0.15s ease;
+  /* padding: 7px;
+  border-radius: 7px; */
+}
+.dropdown:hover{
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+/* ------ Functionality Section ------  */
+div#game{
+  text-align: justify;
+  line-height: 75px;
+  height: 245px;
+  overflow:hidden;
+}
+div.word{
+  display: inline-block;
+  font-family: 'Roboto Mono', monospace;
+  margin: 0px 5px;
+}
+/*-----Timer Functionality Section-------*/
+#game.over #words{
+  opacity: 50%;
+  filter: blur(0px);
+}
+#game.over:focus #cursor{
+  display: none;
+}
+#game.over #focus-error{
+  display: none;
+}
+/* this the footer design */
+.footer{
+display: flex;
+/* border: 1px solid black; */
+align-items: center;
+justify-content: space-around;
+/* margin-top: 270px; */
+}
+.footer-left{
+display: flex;
+align-items: center;
+justify-content: center;
+vertical-align: bottom;
+gap: 40px;
+margin-top: 30px;
+/* margin-bottom: 20px; */
+/* margin-left: 0px; */
+}
+.footer-left a{
+color: var(--secondaryColor);
+text-decoration: none;
+font-size: 18px;
+/* font-weight: bolder; */
+}
+.div1{
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.mail-icon, .github, .developers{
+width: 30px;
+height: 22px;
+}
+.key-tips{
+color: var(--secondaryColor);
+/* padding-bottom: 150px; */
+margin-top: 130px;
+text-align: center;
+/* border: 1px solid black; */
+height: 40px;
+}
+.tip1{
+background-color: yellow;
+padding: 5px;
+color:black;
+border-radius: 8px;
+margin-right: 4px;
+}
+.switch{
+  /* Variables */
+ --switch_width: 2em;
+ --switch_height: 1em;
+ --thumb_color: #e8e8e8;
+ --track_color: #e8e8e8;
+ --track_active_color: #888;
+ --outline_color: #000;
+ font-size: 17px;
+ position: relative;
+ top: 17px;
+ left: 0px;
+ display: inline-block;
+ width: var(--switch_width);
+ height: var(--switch_height);
+}
+/* Hide default HTML checkbox */
+.switch input{
+ opacity: 0;
+ width: 0;
+ height: 0;
+}
+/* The slider */
+.slider{
+ box-sizing: border-box;
+ border: 2px solid var(--outline_color);
+ position: absolute;
+ cursor: pointer;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ background-color: var(--track_color);
+ transition: .15s;
+ border-radius: var(--switch_height);
+}
+.slider:before{
+ box-sizing: border-box;
+ position: absolute;
+ content: "";
+ height: var(--switch_height);
+ width: var(--switch_height);
+ border: 2px solid var(--outline_color);
+ border-radius: 100%;
+ left: -2px;
+ bottom: -2px;
+ background-color: var(--thumb_color);
+ transform: translateY(-0.2em);
+ box-shadow: 0 0.2em 0 var(--outline_color);
+ transition: .15s;
+}
+input:checked + .slider{
+ background-color: var(--track_active_color);
+}
+input:focus-visible + .slider{
+ box-shadow: 0 0 0 2px var(--track_active_color);
+}
+/* Raise thumb when hovered */
+input:hover + .slider:before{
+ transform: translateY(-0.3em);
+ box-shadow: 0 0.3em 0 var(--outline_color);
+}
+input:checked + .slider:before{
+ transform: translateX(calc(var(--switch_width) - var(--switch_height))) translateY(-0.2em);
+}
+/* Raise thumb when hovered & checked */
+input:hover:checked + .slider:before{
+ transform: translateX(calc(var(--switch_width) - var(--switch_height))) translateY(-0.3em);
+ box-shadow: 0 0.3em 0 var(--outline_color);
+}
+.dark-mode{
+  background-color: #333; /* dark background color */
+  color: #fff; /* white text color */
+}
+.dark-mode .navbar{
+  background-color: #444; /* dark navbar background color */
+  border-color: #555; /* dark navbar border color */
+}
+.dark-mode .navbar-nav a{
+  color: #fff; /* white navbar link color */
+}
+.dark-mode .main-content{
+  background-color: #444; /* dark main content background color */
+}
+.dark-mode .footer{
+  background-color: #333; /* dark footer background color */
+  color: #fff; /* white footer text color */
+}
+.dark-mode .footer a{
+  color: #fff; /* white footer link color */
+}
+.dark-mode .footer{
+  background-color: #333; /* dark footer background color */
+}
+.dark-mode .footer a, .dark-mode .footer span, .dark-mode .footer p {
+  color: #fff; /* white footer text color */
+}
+.dark-mode .dropdown{
+  background-color: #444; /* dark dropdown background color */
+  border-color: #555; /* dark dropdown border color */
+  color: #fff; /* white dropdown text color */
+}
+.dark-mode .dropdown a{
+  color: #fff; /* white dropdown link color */
+}
+.dark-mode .reset-button{
+  background-color: #444; /* dark reset button background color */
+  border-color: #555; /* dark reset button border color */
+  color: #fff; /* white reset button text color */
+}
+.dark-mode .timer{
+  color: #fff; /* white timer text color */
+}
+.dark-mode .wpm{
+  color: #fff; /* white wpm text color */
+}
+/* Add more styles as needed for other elements */
+/* Light mode styles */
+.footer-left a{
+  color: var(--secondaryColor); /* dark gray text */
+}
+/* Dark mode styles */
+.dark-mode .footer-left a{
+  color: #fff; /* white text */
+}
+.dark-mode .footer{
+  background-color: #333; /* dark footer background color */
+  color: #fff; /* white footer text color */
+}
+.dark-mode .footer a{
+  color: #fff; /* white footer link color */
+}
+.footer{
+  color: #000; /* black text in light mode */
+}
+/* Dark mode styles */
+.dark-mode .footer-left a{
+  color: #fff; /* white text */
+}
+.dark-mode .footer{
+  background-color: #333; /* dark footer background color */
+  color: #fff; /* white footer text color */
+}
+.dark-mode .tip1{
+  color: black; /* white text */
+}
+.dark-mode .test-reset{
+  color: #fff; /* white text */
+}
+/* Dark mode styles */
+.dark-mode #cursor{
+  background-color: #fff; /* white cursor in dark mode */
+}
+/* Light mode styles */
+.navbar{
+  background-color: #333; /* dark navbar background color */
+}
+.navbar-brand{
+  background-color: #333; /* match navbar background color */
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+/* Dark mode styles */
+.dark-mode .navbar{
+  background-color: #212529; /* dark navbar background color in dark mode */
+}
+.dark-mode .navbar-brand{
+  background-color: #212529; /* match navbar background color in dark mode */
+}
+.navbar{
+  background-color: #333; /* navbar background color */
+}
+.navbar-brand{
+  background-color: inherit; /* inherit navbar background color */
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+.dark-mode .navbar{
+  background-color: #333; /* same navbar background color in dark mode */
+}
+.container-md, .navbar mx-2{
+  background-color: #212529; /* This is the default dark mode background color for Bootstrap navbar */
+}
